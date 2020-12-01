@@ -1,0 +1,182 @@
+services:
+  demo:
+  wms:
+    versions: ["1.3.0"]
+    md:
+      title: Canada Meteo Example
+caches:
+  canada_cache:
+    sources: [canada]
+    grids: [GLOBAL_GEODETIC]
+sources:
+  canada:
+    type: wms
+    req:
+      url: https://geo.wxod-dev.cmc.ec.gc.ca/geomet
+      layers: GDPS.ETA_TT,RADAR_1KM_RRAI,RADAR_1KM_RDBR,RADAR_1KM_RSNO,GDPS.ETA_UU,GDPS.ETA_NT,HRDPS.CONTINENTAL_TT,HRDPS.CONTINENTAL_HR,RADAR_COVERAGE_RRAI.INV,HRDPS.CONTINENTAL_TD,GDPS.ETA_RT,CURRENT_CONDITIONS,HRDPS.CONTINENTAL_NT,HRDPS.CONTINENTAL_PR,GDPS.ETA_PR,GDPS.ETA_HR
+      forward_req_params: ['time', 'dim_reference_time',]
+
+globals:
+
+layers:
+  - name: GDPS.ETA_TT
+    title: GDPS.ETA_TT - Global temperature
+    sources: [canada_cache]
+    dimensions:
+      time:
+        values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+        default: "2020-11-04T12:00:00Z"
+      dim_reference_time:
+        values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+        default: "2020-11-04T00:00:00Z"
+  - name: RADAR_1KM_RRAI
+    title: RADAR_1KM_RRAI - 1km radar
+    sources: [canada_cache]
+    dimensions:
+      time:
+        values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+        default: "2020-11-04T12:00:00Z"
+      dim_reference_time:
+        values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+        default: "2020-11-04T00:00:00Z"
+  - name: RADAR_1KM_RDBR
+    title: RADAR_1KM_RDBR - 1km radar
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: RADAR_1KM_RSNO
+    title: RADAR_1KM_RSNO - 1km radar
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: GDPS.ETA_UU
+    title: GDPS.ETA_UU - global
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: GDPS.ETA_NT
+    title: GDPS.ETA_NT - global
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: HRDPS.CONTINENTAL_TT
+    title: HRDPS.CONTINENTAL_TT - canada temperature
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: HRDPS.CONTINENTAL_HR
+    title: HRDPS.CONTINENTAL_HR - canada
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: RADAR_COVERAGE_RRAI.INV
+    title: RADAR_COVERAGE_RRAI.INV
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: HRDPS.CONTINENTAL_TD
+    title: HRDPS.CONTINENTAL_TD - canada
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: GDPS.ETA_RT
+    title: GDPS.ETA_RT - global
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: CURRENT_CONDITIONS
+    title: CURRENT_CONDITIONS
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: HRDPS.CONTINENTAL_NT
+    title: HRDPS.CONTINENTAL_NT - canada
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: HRDPS.CONTINENTAL_PR
+    title: HRDPS.CONTINENTAL_PR - canada
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: GDPS.ETA_PR
+    title: GDPS.ETA_PR - global
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+  - name: GDPS.ETA_HR
+    title: GDPS.ETA_HR - global
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
+         default: "2020-11-04T12:00:00Z"
+       dim_reference_time:
+          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
+          default: "2020-11-04T00:00:00Z"
+
