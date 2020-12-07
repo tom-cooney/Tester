@@ -13,170 +13,212 @@ sources:
     type: wms
     req:
       url: https://geo.wxod-dev.cmc.ec.gc.ca/geomet
-      layers: GDPS.ETA_TT,RADAR_1KM_RRAI,RADAR_1KM_RDBR,RADAR_1KM_RSNO,GDPS.ETA_UU,GDPS.ETA_NT,HRDPS.CONTINENTAL_TT,HRDPS.CONTINENTAL_HR,RADAR_COVERAGE_RRAI.INV,HRDPS.CONTINENTAL_TD,GDPS.ETA_RT,CURRENT_CONDITIONS,HRDPS.CONTINENTAL_NT,HRDPS.CONTINENTAL_PR,GDPS.ETA_PR,GDPS.ETA_HR
-      forward_req_params: ['time', 'dim_reference_time',]
+      layers: GDPS.ETA_TT,RADAR_1KM_RRAI,RADAR_1KM_RDBR,RADAR_1KM_RSNO,GDPS.ETA_UU,GDPS.ETA_NT,HRDPS.CONTINENTAL_TT,HRDPS.CONTINENTAL_HR,RADAR_COVERAGE_RRAI.INV,HRDPS.CONTINENTAL_TD,GDPS.ETA_RT,HRDPS.CONTINENTAL_NT,GDPS.ETA_SD,HRDPS.CONTINENTAL_PR,GDPS.ETA_PR,GDPS.ETA_HR,HRDPS.CONTINENTAL_WGE,RDPS.ETA_SD
+      forward_req_params: ['time', 'reference_time',]
 
 globals:
 
 layers:
   - name: GDPS.ETA_TT
-    title: GDPS.ETA_TT - Global temperature
+    title: GDPS.ETA_TT - Global Deterministic Prediction System (GDPS) [15 km] - Air temperature [°C] 
     sources: [canada_cache]
     dimensions:
       time:
         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
         default: "2020-11-04T12:00:00Z"
-      dim_reference_time:
+      reference_time:
         values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
         default: "2020-11-04T00:00:00Z"
+
+
   - name: RADAR_1KM_RRAI
-    title: RADAR_1KM_RRAI - 1km radar
+    title: RADAR_1KM_RRAI - North American radar composite (1 km) - Radar precipitation rate (Rain) (1 km) [mm/hr]
     sources: [canada_cache]
     dimensions:
       time:
         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
         default: "2020-11-04T12:00:00Z"
-      dim_reference_time:
-        values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-        default: "2020-11-04T00:00:00Z"
+
+
   - name: RADAR_1KM_RDBR
-    title: RADAR_1KM_RDBR - 1km radar
+    title: RADAR_1KM_RDBR - North American radar composite (1 km) - Radar reflectivity (Rain) (1 km) [dBZ]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
-          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-          default: "2020-11-04T00:00:00Z"
+
+
   - name: RADAR_1KM_RSNO
-    title: RADAR_1KM_RSNO - 1km radar
+    title: RADAR_1KM_RSNO - North American radar composite (1 km) - Radar precipitation rate (Snow) (1 km) [cm/hr]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
-          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-          default: "2020-11-04T00:00:00Z"
+
+
   - name: GDPS.ETA_UU
-    title: GDPS.ETA_UU - global
+    title: GDPS.ETA_UU - Global Deterministic Prediction System (GDPS) [15 km] - Winds [m/s]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: GDPS.ETA_NT
-    title: GDPS.ETA_NT - global
+    title: GDPS.ETA_NT - Global Deterministic Prediction System (GDPS) [15 km] - Total cloud cover [%]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: HRDPS.CONTINENTAL_TT
-    title: HRDPS.CONTINENTAL_TT - canada temperature
+    title: HRDPS.CONTINENTAL_TT - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Air temperature [°C]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: HRDPS.CONTINENTAL_HR
-    title: HRDPS.CONTINENTAL_HR - canada
+    title: HRDPS.CONTINENTAL_HR - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Relative humidity [%]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: RADAR_COVERAGE_RRAI.INV
-    title: RADAR_COVERAGE_RRAI.INV
+    title: RADAR_COVERAGE_RRAI.INV - North American radar composite (1 km) - inverted (Rain) (1km)
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
-          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-          default: "2020-11-04T00:00:00Z"
+
+
   - name: HRDPS.CONTINENTAL_TD
-    title: HRDPS.CONTINENTAL_TD - canada
+    title: HRDPS.CONTINENTAL_TD - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Dew point temperature [°C]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: GDPS.ETA_RT
-    title: GDPS.ETA_RT - global
+    title: GDPS.ETA_RT - Global Deterministic Prediction System (GDPS) [15 km] - Instantaneous precipitation rate [kg/(m^2 s)]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
-  - name: CURRENT_CONDITIONS
-    title: CURRENT_CONDITIONS
-    sources: [canada_cache]
-    dimensions: 
-       time: 
-         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
-         default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
-          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-          default: "2020-11-04T00:00:00Z"
+
+
   - name: HRDPS.CONTINENTAL_NT
-    title: HRDPS.CONTINENTAL_NT - canada
+    title: HRDPS.CONTINENTAL_NT - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Total cloud cover [%]
     sources: [canada_cache]
     dimensions: 
        time: 
-         values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
-         default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
-          values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
-          default: "2020-11-04T00:00:00Z"
+         values: ["2020-12-07T06:00:00Z/2020-12-09T06:00:00Z/PT1H"]
+         default: "2020-12-07T13:00:00Z"
+       reference_time:
+          values: ["2020-12-05T18:00:00Z/2020-12-07T06:00:00Z/PT6H"]
+          default: "2020-12-07T06:00:00Z"
+
+
+
+  - name: GDPS.ETA_SD
+    title: GDPS.ETA_SD - Global Deterministic Prediction System (GDPS) [15 km] - Snow depth [m]
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-12-07T00:00:00Z/2020-12-17T00:00:00Z/PT3H"]
+         default: "2020-12-07T12:00:00Z"
+       reference_time:
+          values: ["2020-12-05T12:00:00Z/2020-12-07T00:00:00Z/PT12H"]
+          default: "2020-12-07T00:00:00Z"
+
+
   - name: HRDPS.CONTINENTAL_PR
-    title: HRDPS.CONTINENTAL_PR - canada
+    title: HRDPS.CONTINENTAL_PR - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Precipitation accumulation [kg/(m^2)]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: GDPS.ETA_PR
-    title: GDPS.ETA_PR - global
+    title: GDPS.ETA_PR - Global Deterministic Prediction System (GDPS) [15 km] - Precipitation accumulation [kg/(m^2)]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
   - name: GDPS.ETA_HR
-    title: GDPS.ETA_HR - global
+    title: GDPS.ETA_HR - Global Deterministic Prediction System (GDPS) [15 km] - Relative humidity [%]
     sources: [canada_cache]
     dimensions: 
        time: 
          values: ["2020-11-04T00:00:00Z/2020-11-14T00:00:00Z/PT3H"]
          default: "2020-11-04T12:00:00Z"
-       dim_reference_time:
+       reference_time:
           values: ["2020-11-02T12:00:00Z/2020-11-04T00:00:00Z/PT12H"]
           default: "2020-11-04T00:00:00Z"
+
+
+  - name: HRDPS.CONTINENTAL_WGE
+    title: HRDPS.CONTINENTAL_WGE - High Resolution Deterministic Prediction System (HRDPS) [2.5 km] - Wind gust estimate [m/s]
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-12-07T06:00:00Z/2020-12-09T06:00:00Z/PT1H"]
+         default: "2020-12-07T12:00:00Z"
+       reference_time:
+          values: ["2020-12-05T18:00:00Z/2020-12-07T06:00:00Z/PT6H"]
+          default: "2020-12-07T06:00:00Z"
+
+  - name: RDPS.ETA_SD
+    Title: RDPS.ETA_SD - Regional Deterministic Prediction System (RDPS) [10 km] - Snow depth [m]
+    sources: [canada_cache]
+    dimensions: 
+       time: 
+         values: ["2020-12-07T06:00:00Z/2020-12-09T12:00:00Z/PT1H"]
+         default: "2020-12-07T14:00:00Z"
+       reference_time:
+          values: ["2020-12-05T18:00:00Z/2020-12-07T06:00:00Z/PT6H"]
+          default: "2020-12-07T06:00:00Z"
 
